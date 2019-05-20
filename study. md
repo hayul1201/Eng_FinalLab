@@ -39,6 +39,17 @@ sudo nscd start
 ```
 sudo yum install mariadb-server
 ```
+
+#잘못설치 시 
+```
+These steps are working on CentOS 6.5 so they should work on CentOS 7 too:
+1.yum remove mariadb mariadb-server
+2.rm -rf /var/lib/mysql If your datadir in /etc/my.cnf points to a different directory, remove that directory instead of /var/lib/mysql
+3.rm /etc/my.cnf
+4.Optional step: rm ~/.my.cnf
+5.yum install mariadb mariadb-server
+```
+
 #설정
 ```
 mysqld]
