@@ -27,3 +27,16 @@ BOOT_IMAGE=/vmlinuz-3.10.0-514.10.2.el7.x86_64 root=/dev/mapper/vg_os-lv_root ro
 =auto rd.lvm.lv=vg_os/lv_root rd.lvm.lv=vg_os/lv_swap rhgb quiet transparent_hugepage=never LANG=en_US.UTF-8
 ```
 
+#host파일 수정
+
+#nscd  설치
+```
+sudo yum install nscd 
+sudo nscd start 
+
+```
+
+#maria db 
+```
+sudo yum install mariadb-server
+```
