@@ -1,0 +1,29 @@
+```
+Filesystem     1K-blocks   Used Available Use% Mounted on
+/dev/xvda1       8377344 916948   7460396  11% /
+devtmpfs         8109736      0   8109736   0% /dev
+tmpfs            8132592      0   8132592   0% /dev/shm
+tmpfs            8132592  16952   8115640   1% /run
+tmpfs            8132592      0   8132592   0% /sys/fs/cgroup
+tmpfs            1626520      0   1626520   0% /run/user/0
+tmpfs            1626520      0   1626520   0% /run/user/1000
+```
+
+#Disable transparent hugepage support
+```
+# vi /etc/default/grub
+GRUB_TIMEOUT=5
+GRUB_DEFAULT=saved
+GRUB_DISABLE_SUBMENU=true
+GRUB_TERMINAL_OUTPUT="console"
+GRUB_CMDLINE_LINUX="nomodeset crashkernel=auto rd.lvm.lv=vg_os/lv_root rd.lvm.lv=vg_os/lv_swap rhgb quiet transparent_hugepage=never"
+GRUB_DISABLE_RECOVERY="true"
+
+# grub2-mkconfig -o /boot/grub2/grub.cfg
+# grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
+# shutdown -r now
+# cat /proc/cmdline
+BOOT_IMAGE=/vmlinuz-3.10.0-514.10.2.el7.x86_64 root=/dev/mapper/vg_os-lv_root ro nomodeset crashkernel\
+=auto rd.lvm.lv=vg_os/lv_root rd.lvm.lv=vg_os/lv_swap rhgb quiet transparent_hugepage=never LANG=en_US.UTF-8
+```
+
