@@ -559,6 +559,8 @@ Not connected to Impala, could not execute queries.
 
 ##### sqoop import --connect jdbc:mysql://172.31.9.8:3306/loudacre --username training --password training --table device --target-dir /user/training/loudacre/device
 
+##### sqoop import --connect jdbc:mysql://172.31.9.8:3306/loudacre --username training --password training --table customerservicerep --target-dir /user/training/loudacre/customerservicerep_hive  --hive-import
+
 <pre><code>
 create external table device (
 device_num string,
